@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <img src="todo.jpeg" alt="ToDo Logo">
+                <p>To-Do List</p>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="todo-section">
+            <div class="todo-container">
+                <h2>Organize Your Tasks</h2>
+                <form class="todo-form">
+                    <div class="todo-item">
+                        <input type="text" id="new-task-input" class="todo-input" placeholder="Enter your task here">
+                        <button class="add-btn" type="button" id="add-task-btn">Add Task</button>
+                    </div>
+                </form>
+                <ul class="todo-list" id="todo-list">
+                </ul>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.getElementById('add-task-btn').addEventListener('click', function () {
+            const taskInput = document.getElementById('new-task-input');
+            const taskText = taskInput.value.trim();
+            if (taskText !== "") {
+                const newTask = document.createElement('li');
+                newTask.classList.add('todo');
+                newTask.innerHTML = `
+                    <span class="todo-text">${taskText}</span>
+                    <input class="todo-checkbox" type="checkbox">
+                `;
+                document.getElementById('todo-list').appendChild(newTask);
+
+                taskInput.value = "";
+            } else {
+                alert("Please enter a task.");
+            }
+        });
+    </script>
+</body>
+</html>
